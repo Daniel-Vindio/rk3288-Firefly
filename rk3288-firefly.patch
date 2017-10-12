@@ -1,0 +1,32 @@
+diff -Naur kernel_0/drivers/net/wireless/rockchip_wlan/rkwifi/bcmdhd/Makefile kernel_1/drivers/net/wireless/rockchip_wlan/rkwifi/bcmdhd/Makefile
+--- kernel_0/drivers/net/wireless/rockchip_wlan/rkwifi/bcmdhd/Makefile	2017-10-07 23:34:30.746811000 +0200
++++ kernel_1/drivers/net/wireless/rockchip_wlan/rkwifi/bcmdhd/Makefile	2017-10-12 10:09:45.492817091 +0200
+@@ -9,7 +9,8 @@
+ CONFIG_BCMDHD_PROPTXSTATUS := y
+ CONFIG_BCMDHD_AG := y
+ 
+-DHDCFLAGS = -Wall -Wstrict-prototypes -Dlinux -DBCMDRIVER -DSDTEST       \
++DHDCFLAGS = -Wall -Wno-misleading-indentation -Wno-tautological-compare \
++	-Wstrict-prototypes -Dlinux -DBCMDRIVER -DSDTEST       \
+ 	-DBCMDONGLEHOST -DUNRELEASEDCHIP -DBCMDMA32 -DBCMFILEIMAGE            \
+ 	-DDHDTHREAD -DDHD_DEBUG -DSHOW_EVENTS -DBCMDBG -DGET_OTP_MAC_ENABLE   \
+ 	-DWIFI_ACT_FRAME -DARP_OFFLOAD_SUPPORT -DSUPPORT_PM2_ONLY             \
+diff -Naur kernel_0/drivers/net/wireless/rockchip_wlan/rtl8188eu/Makefile kernel_1/drivers/net/wireless/rockchip_wlan/rtl8188eu/Makefile
+--- kernel_0/drivers/net/wireless/rockchip_wlan/rtl8188eu/Makefile	2017-10-07 23:34:30.786811000 +0200
++++ kernel_1/drivers/net/wireless/rockchip_wlan/rtl8188eu/Makefile	2017-10-12 10:09:45.496817091 +0200
+@@ -15,6 +15,7 @@
+ EXTRA_CFLAGS += -Wno-unused
+ #EXTRA_CFLAGS += -Wno-uninitialized
+ #EXTRA_CFLAGS += -Wno-error=date-time	# Fix compile error on gcc 4.9 and later
++EXTRA_CFLAGS += -Wno-misleading-indentation -Wno-tautological-compare
+ 
+ EXTRA_CFLAGS += -I$(src)/include
+ EXTRA_CFLAGS += -I$(src)/hal/phydm
+diff -Naur kernel_0/net/rfkill/Makefile kernel_1/net/rfkill/Makefile
+--- kernel_0/net/rfkill/Makefile	2017-10-07 23:34:33.730811000 +0200
++++ kernel_1/net/rfkill/Makefile	2017-10-12 10:09:45.488817091 +0200
+@@ -8,3 +8,4 @@
+ obj-$(CONFIG_RFKILL_REGULATOR)	+= rfkill-regulator.o
+ obj-$(CONFIG_RFKILL_GPIO)	+= rfkill-gpio.o
+ obj-y				+= rfkill-wlan.o rfkill-bt.o
++ccflags-y += -Wno-misleading-indentation
